@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HIDDEN POET</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f5f1e6;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 4rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #f0a94e;
+      margin-bottom: 0.2rem;
+      text-shadow: 2px 2px 6px #8a5c1a;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-style: italic;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      color: #d4b87f;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(240, 169, 78, 0.5);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(240, 169, 78, 0.8);
+    }
+    
+    textarea {
+      width: 50%;
+      height: 150px;
+      font-size: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #f2a365;
+      border-radius: 4px;
+      resize: vertical;
+      color: #121212;
+      font-family: Georgia, serif;
+    }
+
+    
+    button {
+      background: #f2a365;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: block;
+      margin: 0 auto;
+    }
+    button:hover {
+      background: #c17c4a;
+    }
+  </style>
+</head>
+<body>
+  <h1>HIDDEN POET</h1>
+  <h2>feelings can express with rhythm</h2>
+
+  <div class="gallery">
+    <img src="https://media.istockphoto.com/id/614125152/photo/poetry-book-at-sunset.jpg?s=612x612&w=0&k=20&c=S2zAu3-fRMN84WIFgkpjCRysnSs6BFnKLKR_P07sFbs=" alt="Image 1" />
+    <img src="https://media.istockphoto.com/id/479134357/photo/fountain-pen-on-text-sheet-paper-with-rose.jpg?s=612x612&w=0&k=20&c=ARIFTrGpzKX7daxCMz-79nVPqI_0kyUYCkDfC8RLiX8=" alt="Image 2" />
+    <img src="https://media.istockphoto.com/id/155445741/photo/antique-book-open-for-reading.jpg?s=612x612&w=0&k=20&c=ZruS_4jV5QcTnJbs7EVAMJw9vbP4gdz5cyEPHSE99fE=" alt="Image 3" />
+  </div><br/>
+
+        <br>
+  <form id="poemForm">
+    <textarea id="poemInput" placeholder="Write your poem here..." required></textarea>
+    <button type="button" id="nextBtn">Next</button>
+  </form>
+
+  <script>
+    const nextBtn = document.getElementById('nextBtn');
+    const poemInput = document.getElementById('poemInput');
+
+    nextBtn.addEventListener('click', function() {
+      const poemText = poemInput.value.trim();
+      if (poemText.length === 0) {
+        alert('Please write a poem before going next.');
+        return;
+      }
+      // Save poemText to localStorage
+      localStorage.setItem('poemInput', poemText);
+      // Go to second page
+      window.location.href = '2nddemo.html';
+    });
+
+    // Optional: load previously saved poem if exists
+    window.onload = () => {
+      const savedPoem = localStorage.getItem('poemInput');
+      if(savedPoem) {
+        poemInput.value = savedPoem;
+      }
+    };
+  </script>
+</body>
+</html>

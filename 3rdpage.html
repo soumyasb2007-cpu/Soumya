@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Poem</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f5f1e6;
+      font-family: 'Georgia', serif;
+      margin: 2rem;
+      text-align: center;
+    }
+    #poemDisplay {
+      min-height: 150px;
+      max-height: fit-content;
+      width: 50%;
+      padding: 12rem;
+      background-size: cover;
+      background-position: center;
+      color: #220404;
+      font-size: 1.5rem;
+      font-weight: 600;
+      white-space: pre-wrap;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(218, 80, 80, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <div id="poemDisplay">Loading your poem...</div>
+
+  <script>
+    const poemDisplay = document.getElementById('poemDisplay');
+    const poem = localStorage.getItem('poemInput');
+    const background = localStorage.getItem('poemBackground');
+
+    if(poem) {
+      poemDisplay.textContent = poem;
+    } else {
+      poemDisplay.textContent = "No poem available.";
+    }
+
+    if(background) {
+      poemDisplay.style.backgroundImage = `url(${background})`;
+    }
+  </script>
+</body>
+</html>
